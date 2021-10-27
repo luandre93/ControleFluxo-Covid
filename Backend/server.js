@@ -22,16 +22,16 @@ io.on("connection", function (socket) {
     socket.on("join", function (name) {
         clients[socket.id] = name;
         socket.join(name)
-        cliente = db.chain.get('Lojas').find({ Loja: parseInt(clients[socket.id]) }).value()
+        cliente = db.chain.get('Lojas').find({ Loja: clients[socket.id] }).value()
         io.in(clients[socket.id]).emit('chat', JSON.stringify(cliente))
         console.log(cliente);
-    });
+    })
 
     socket.on("send", function (msg) {
         cliente = { "Loja": parseInt(clients[socket.id]), "Message": JSON.parse(msg).Message, "Limite": JSON.parse(msg).Limite }
         console.log(cliente)
         db.chain.get('Lojas')
-            .find({ Loja: parseInt(clients[socket.id]) })
+            .find({ Loja: clients[socket.id] })
             .assign({ "Message": JSON.parse(msg).Message, "Limite": JSON.parse(msg).Limite })
             .commit();
         db.write()

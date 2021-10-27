@@ -62,7 +62,7 @@
 
 <script>
 import io from "socket.io-client";
-var socket = io.connect("http://192.168.0.5:8081", {
+var socket = io.connect("http://localhost:8081", {
   transports: ["websocket"],
 });
 export default {
@@ -76,8 +76,9 @@ export default {
   mounted() {
     this.verificar();
     this.existName();
-    const self = this;
+    var self = this;
     socket.emit("join", this.nome);
+    console.log(this.nome);
     socket.on("chat", function (data) {
       self.cliente = JSON.parse(data);
       self.progress = (self.cliente.Message / self.cliente.Limite) * 100;

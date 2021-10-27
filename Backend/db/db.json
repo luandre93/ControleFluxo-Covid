@@ -2,8 +2,8 @@
   "Lojas": [
     {
       "Loja": "01",
-      "Message": 0,
-      "Limite": 200
+      "Message": 50,
+      "Limite": 300
     },
     {
       "Loja": "02",
