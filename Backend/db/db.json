@@ -1,0 +1,14 @@
+{
+  "Lojas": [
+    {
+      "Loja": 01,
+      "Message": 0,
+      "Limite": 200
+    },
+    {
+      "Loja": 02,
+      "Message": 0,
+      "Limite": 200
+    }
+  ]
+}
